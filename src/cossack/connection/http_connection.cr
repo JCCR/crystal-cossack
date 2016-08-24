@@ -7,7 +7,7 @@ module Cossack
       client.read_timeout = request.options.read_timeout
 
       http_response = client.exec(request.method, request.uri.to_s, request.headers, request.body)
-      Response.new(http_response.status_code, http_response.headers, http_response.body)
+      Response.new(http_response.status_code, http_response.headers, http_response.body, http_response.body_io)
     rescue err : IO::Timeout
       raise TimeoutError.new(err.message, cause: err)
     end
