@@ -11,7 +11,7 @@ module Cossack
       Response.new(http_response.status_code, http_response.headers, http_response.body, http_response.body_io)
     rescue err # : IO::Timeout
       puts err.message
-      #raise TimeoutError.new(err.message, cause: err)
+      raise err
     end
   end
 end
